@@ -213,6 +213,16 @@ Rectangle {
                 onAccepted: loginButton.clicked()
             }
 
+            Text {
+                id: loginError
+                width: parent.width
+                text: ""
+                color: "#FFAAAA"
+                font.pixelSize: 12
+                horizontalAlignment: Text.AlighnHCenter
+                visible: text !== ""
+            }
+
             Button {
                 id: loginButton
                 width: parent.width
@@ -243,6 +253,7 @@ Rectangle {
                 target: sddm
 
                 function onLoginFailed() {
+                    loginError.text = "Incorrect Password"
                     passwordField.text = ""
                     passwordField.forceActivateFocus()
                 }

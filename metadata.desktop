@@ -1,0 +1,10 @@
+[SddmGreeterTheme]
+Name=Mokona Greeter
+Description=A cozy celestial login experience
+Author=User
+Type=sddm-theme
+Version=0.1
+MainScript=Main.qml
+ConfigFile=theme.conf
+QtVersion=6
+

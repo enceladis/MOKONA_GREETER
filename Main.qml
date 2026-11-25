@@ -59,6 +59,7 @@ Rectangle {
         property color fieldBackground: "#40201D38"
         property color fieldBorder: "#806F62A8"
         property color fieldFocus: "#B99AFF"
+        property bool loggingIn: false
 
         anchors {
             left: parent.left
@@ -226,7 +227,8 @@ Rectangle {
             Button {
                 id: loginButton
                 width: parent.width
-                text: "Log in"
+                text: loginPanel.loggingIn ? "Logging in..." : "Log in"
+                enabled: !loginPanel.loggingIn
 
                 background: Rectangle {
                     radius: 50
@@ -245,6 +247,9 @@ Rectangle {
                 }
 
                 onClicked: {
+                    loginError.text = ""
+                    loginPanel.loggingIn = true
+
                     sddm.login(userBox.currentText, passwordField.text, sessionBox.currentIndex)
                 }
             }
@@ -253,6 +258,7 @@ Rectangle {
                 target: sddm
 
                 function onLoginFailed() {
+                    loginPanel.loggingIn = false
                     loginError.text = "Incorrect Password"
                     passwordField.text = ""
                     passwordField.forceActivateFocus()

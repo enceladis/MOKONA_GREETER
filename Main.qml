@@ -32,8 +32,8 @@ Rectangle {
         anchors {
             left: parent.left
             top: parent.top
-            leftMargin: 90
-            topMargin: 90
+            leftMargin: 120
+            topMargin: 120
         }
 
         spacing: 8
@@ -41,7 +41,7 @@ Rectangle {
         Text {
             text: Qt.formatTime(new Date(), "hh:mm")
             color: "white"
-            font.pixelSize: 76
+            font.pixelSize: 160
             font.weight: Font.Light
         }
 
@@ -49,6 +49,8 @@ Rectangle {
             text: Qt.formatDate(new Date(), "dddd, MMMM d")
             color: "#D4CDEB"
             font.pixelSize: 20
+            horizontalAlignment: Text.AlignHCenter
+            width: parent.width
         }
     }
 
@@ -69,7 +71,7 @@ Rectangle {
         }
 
         width: 600
-        height: 270
+        height: 315
         radius: 15
         color: "#35FFFFFF"
         border.color: "#55FFFFFF"
@@ -194,6 +196,7 @@ Rectangle {
             TextField {
                 id: passwordField
                 width: parent.width
+                height: 38
                 placeholderText: "Password"
                 echoMode: TextInput.Password
                 color: "white"
@@ -342,6 +345,47 @@ Rectangle {
                     leftPadding: 12
                     rightPadding: 32
                     font.pixelSize: 14
+                }
+            }
+
+            Row {
+                width: parent.width
+                spacing: 12
+
+                Button {
+                    id: sleepButton
+
+                    text: "sleep"
+                    width: (parent.width - 12) / 2
+
+                    background: Rectangle {
+                        radius: 50
+
+                        color: sleepButton.down ? "#7654B5"
+                        : sleepButton.hovered ? "#9B78DA"
+                        : "#8965C5"
+                    }
+                }
+
+                Button {
+                    id: powerButton
+
+                    text: "power off"
+                    width: (parent.width - 12) / 2
+
+                    background: Rectangle {
+                        radius: 50
+
+                        color: powerButton.down ? "#7654B5"
+                        : powerButton.hovered ? "#9B78DA"
+                        : "#8965C5"
+                    }
+
+                    hoverEnabled: true
+
+                    onHoveredChanged: {
+                        console.log("power hovered:", hovered)
+                    }
                 }
             }
         }

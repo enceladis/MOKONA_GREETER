@@ -97,8 +97,8 @@ Rectangle {
         id: loginPanel
 
         property color fieldBackground: "#251329"
-        property color fieldBorder: '#6f3359'
-        property color fieldFocus: "#A34D83"
+        property color fieldBorder: "#C99F91"
+        property color fieldFocus: "#FF9AAB"
         property bool loggingIn: false
 
         anchors {
@@ -112,15 +112,12 @@ Rectangle {
         height: 315
         radius: 15
         color: "#35FFFFFF"
-        clip: true
 
         Rectangle {
             id: blurMask
             anchors.fill: parent
-            anchors.margins: 1
-            color: "white"
-            radius: 15
             layer.enabled: true
+            radius: 15
             visible: false
         }
 
@@ -157,7 +154,7 @@ Rectangle {
             id: blurTint
             anchors.fill: parent
             radius: 15
-            color: "#30F48C9E"
+            color: "#20F48C9E"
         }
 
         Rectangle {

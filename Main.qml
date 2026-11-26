@@ -40,14 +40,14 @@ Rectangle {
 
         Text {
             text: Qt.formatTime(new Date(), "hh:mm")
-            color: "white"
+            color: "#E8DCEB"
             font.pixelSize: 160
             font.weight: Font.Light
         }
 
         Text {
             text: Qt.formatDate(new Date(), "dddd, MMMM d")
-            color: "#D4CDEB"
+            color: '#eccee4'
             font.pixelSize: 20
             horizontalAlignment: Text.AlignHCenter
             width: parent.width
@@ -97,9 +97,9 @@ Rectangle {
     Rectangle {
         id: loginPanel
 
-        property color fieldBackground: "#40201D38"
-        property color fieldBorder: "#806F62A8"
-        property color fieldFocus: "#B99AFF"
+        property color fieldBackground: "#251329"
+        property color fieldBorder: '#6f3359'
+        property color fieldFocus: "#A34D83"
         property bool loggingIn: false
 
         anchors {
@@ -113,7 +113,7 @@ Rectangle {
         height: 315
         radius: 15
         color: "#35FFFFFF"
-        border.color: "#55FFFFFF"
+        border.color: "#A34D83"
         border.width: 1
 
         ShaderEffectSource {
@@ -149,7 +149,7 @@ Rectangle {
 
             Text {
                 text: "Welcome back ♡"
-                color: "white"
+                color: "#F48C9E"
                 font.pixelSize: 22
                 horizontalAlignment: Text.AlignHCenter
                 width: parent.width
@@ -186,7 +186,7 @@ Rectangle {
                     padding: 4
 
                     background: Rectangle {
-                        color: "#E629243D"
+                        color: "#140C20"
                         radius: 15
                         border.color: loginPanel.fieldFocus
                         border.width: 1
@@ -218,7 +218,7 @@ Rectangle {
 
                     background: Rectangle {
                         radius: 8
-                        color: parent.highlighted ? "#51416F" : "transparent"
+                        color: parent.highlighted ? "#A34D83" : "transparent"
                     }
                 } 
 
@@ -238,7 +238,7 @@ Rectangle {
                 height: 38
                 placeholderText: "Password"
                 echoMode: TextInput.Password
-                color: "white"
+                color: "#E8DCEB"
                 placeholderTextColor: "#BDB8CE"
                 selectByMouse: true
 
@@ -260,7 +260,7 @@ Rectangle {
                 id: loginError
                 width: parent.width
                 text: ""
-                color: "#FFAAAA"
+                color: '#f05050'
                 font.pixelSize: 12
                 horizontalAlignment: Text.AlighnHCenter
                 visible: text !== ""
@@ -274,14 +274,14 @@ Rectangle {
 
                 background: Rectangle {
                     radius: 50
-                    color: parent.down ? "#7654B5"
-                    : parent.hovered ? "#9B78DA"
-                    : "#8965C5"
+                    color: parent.down ? '#a35d68'
+                    : parent.hovered ? '#eaa4b0'
+                    : "#F48C9E"
                 }
 
                 contentItem: Text {
                     text: parent.text
-                    color: "white"
+                    color: "#E8DCEB"
                     font.pixelSize: 15
                     font.weight: Font.Medium
                     horizontalAlignment: Text.AlignHCenter
@@ -332,7 +332,7 @@ Rectangle {
                     padding: 8
 
                     background: Rectangle {
-                        color: "#E629243D"
+                        color: "#140C20"
                         radius: 15
                         border.color: loginPanel.fieldFocus
                         border.width: 1
@@ -355,7 +355,7 @@ Rectangle {
 
                     contentItem: Text {
                         text: model.name
-                        color: "white"
+                        color: "#E8DCEB"
                         verticalAlignment: Text.AlignVCenter
                         leftPadding: 10
                         font.pixelSize: 14
@@ -366,8 +366,8 @@ Rectangle {
                     background: Rectangle {
                         radius: 8
                         color: sessionBox.currentIndex === index
-                            ? "#68558F"
-                            : "#402F59"
+                            ? "#A34D83"
+                            : '#683053'
                     }
 
                     onClicked: {
@@ -408,9 +408,9 @@ Rectangle {
                     background: Rectangle {
                         radius: 50
 
-                        color: sleepButton.down ? "#7654B5"
-                        : sleepButton.hovered ? "#9B78DA"
-                        : "#8965C5"
+                        color: sleepButton.down ? '#a35d68'
+                            : sleepButton.hovered ? '#eaa4b0'
+                            : "#F48C9E"
                     }
 
                     enabled: sddm.canSuspend
@@ -434,9 +434,9 @@ Rectangle {
                     background: Rectangle {
                         radius: 50
 
-                        color: powerButton.down ? "#7654B5"
-                        : powerButton.hovered ? "#9B78DA"
-                        : "#8965C5"
+                        color: powerButton.down ? '#a35d68'
+                            : powerButton.hovered ? '#eaa4b0'
+                            : "#F48C9E"
                     }
 
                     enabled: sddm.canPowerOff

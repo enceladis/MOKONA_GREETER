@@ -54,6 +54,7 @@ Rectangle {
         }
     }
 
+    //profile picture
     Item {
         id: profilePicture
 
@@ -70,40 +71,23 @@ Rectangle {
         Image {
             id: pfpImage
             source: "assets/pfp.png"
+            visible: false
             anchors.fill: parent
             fillMode: Image.PreserveAspectCrop
-            visible: false
         }
 
         Rectangle {
             id: pfpMask
-            width: profilePicture.width
-            height: profilePicture.height
-            radius: width / 2
-            color: "white"
-            visible: false
-        }
-
-        ShaderEffectSource {
-            id: pfpSource
             anchors.fill: parent
-
-            sourceItem: pfpImage
-            sourceRect: Qt.rect(
-                profilePicture.x,
-                profilePicture.y,
-                profilePicture.width,
-                profilePicture.height
-            )
-            live: true
-            hideSource: false
+            radius: width / 2
+            color: "black"
+            layer.enabled: true
+            visible: false
         }
 
         MultiEffect {
             anchors.fill: parent
-
-            source: pfpSource
-
+            source: pfpImage
             maskEnabled: true
             maskSource: pfpMask
         }
@@ -409,9 +393,17 @@ Rectangle {
 
                 Button {
                     id: sleepButton
-
                     text: "sleep"
                     width: (parent.width - 12) / 2
+
+                    contentItem: Text {
+                        text: parent.text
+                        color: "white"
+                        font.pixelSize: 15
+                        font.weight: Font.Medium
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
 
                     background: Rectangle {
                         radius: 50
@@ -420,13 +412,24 @@ Rectangle {
                         : sleepButton.hovered ? "#9B78DA"
                         : "#8965C5"
                     }
+
+                    enabled: sddm.canSuspend
+                    onClicked: sddm.suspend()
                 }
 
                 Button {
                     id: powerButton
-
                     text: "power off"
                     width: (parent.width - 12) / 2
+
+                    contentItem: Text {
+                        text: parent.text
+                        color: "white"
+                        font.pixelSize: 15
+                        font.weight: Font.Medium
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
 
                     background: Rectangle {
                         radius: 50
@@ -436,11 +439,8 @@ Rectangle {
                         : "#8965C5"
                     }
 
-                    hoverEnabled: true
-
-                    onHoveredChanged: {
-                        console.log("power hovered:", hovered)
-                    }
+                    enabled: sddm.canPowerOff
+                    onClicked: sddm.powerOff()
                 }
             }
         }

@@ -54,6 +54,61 @@ Rectangle {
         }
     }
 
+    Item {
+        id: profilePicture
+
+        width: 100
+        height: 100
+
+        anchors {
+            left: parent.left
+            bottom: parent.bottom
+            leftMargin: 370
+            bottomMargin: 450
+        }
+
+        Image {
+            id: pfpImage
+            source: "assets/pfp.png"
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            visible: false
+        }
+
+        Rectangle {
+            id: pfpMask
+            width: profilePicture.width
+            height: profilePicture.height
+            radius: width / 2
+            color: "white"
+            visible: false
+        }
+
+        ShaderEffectSource {
+            id: pfpSource
+            anchors.fill: parent
+
+            sourceItem: pfpImage
+            sourceRect: Qt.rect(
+                profilePicture.x,
+                profilePicture.y,
+                profilePicture.width,
+                profilePicture.height
+            )
+            live: true
+            hideSource: false
+        }
+
+        MultiEffect {
+            anchors.fill: parent
+
+            source: pfpSource
+
+            maskEnabled: true
+            maskSource: pfpMask
+        }
+    }
+
     // Login panel
     Rectangle {
         id: loginPanel

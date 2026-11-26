@@ -1,5 +1,5 @@
 
-import QtQuick
+/* import QtQuick
 
 Item {
     id: root
@@ -195,4 +195,4 @@ Item {
             easing.type: Easing.InOutSine
         }
     }
-}
+} */

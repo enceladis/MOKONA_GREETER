@@ -469,11 +469,11 @@ Rectangle {
     }
 
     // MONOKAAAA
-    OrbitingMokonas {
+    /* OrbitingMokonas {
     anchors.right: parent.right
     anchors.bottom: parent.bottom
 
     anchors.rightMargin: 60
     anchors.bottomMargin: 40
-    }
+    } */
 }

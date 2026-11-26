@@ -2,7 +2,6 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
-import "components"
 import QtQuick.Effects
 
 Rectangle {
@@ -113,8 +112,17 @@ Rectangle {
         height: 315
         radius: 15
         color: "#35FFFFFF"
-        border.color: "#A34D83"
-        border.width: 1
+        clip: true
+
+        Rectangle {
+            id: blurMask
+            anchors.fill: parent
+            anchors.margins: 1
+            color: "white"
+            radius: 15
+            layer.enabled: true
+            visible: false
+        }
 
         ShaderEffectSource {
             id: wallpaperCapture
@@ -137,9 +145,28 @@ Rectangle {
 
             source: wallpaperCapture
 
+            maskEnabled: true
+            maskSource: blurMask
+
             blurEnabled: true
-            blur: 1
+            blur: 0.35
             blurMax: 64
+        }
+
+        Rectangle {
+            id: blurTint
+            anchors.fill: parent
+            radius: 15
+            color: "#30F48C9E"
+        }
+
+        Rectangle {
+            id: outline
+            anchors.fill: parent
+            radius: 15
+            border.width: 1
+            border.color: "#F5C6A5"
+            color: "transparent"
         }
 
         Column {
@@ -467,13 +494,4 @@ Rectangle {
             }
         }
     }
-
-    // MONOKAAAA
-    /* OrbitingMokonas {
-    anchors.right: parent.right
-    anchors.bottom: parent.bottom
-
-    anchors.rightMargin: 60
-    anchors.bottomMargin: 40
-    } */
 }

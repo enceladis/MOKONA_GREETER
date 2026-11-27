@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/mokona_greeter_showcase.png" width="800">
+  <img src="assets/mokona-greeter_showcase.png" width="800">
 </p>
 
 <p align="center">
